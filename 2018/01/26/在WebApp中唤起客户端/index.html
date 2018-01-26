@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在WebApp中唤起客户端 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="当你在浏览器中需要打开或者下载某个应用时，往往你希望直接点击相应按钮即可打开或去应用商店下载该应用，而对于Android和IOS用户，唤起应用的操作是不同的，下面我将讲到如何唤起或打开应用商店下载相应应用。 1. 设置应用商店地址首先设置好跳转至应用商店的URL 123456// .js 文件中const ios_client_url = &quot;https://itunes.apple.com/app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在WebApp中唤起客户端">
+<meta property="og:url" content="http://yoursite.com/2018/01/26/在WebApp中唤起客户端/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="当你在浏览器中需要打开或者下载某个应用时，往往你希望直接点击相应按钮即可打开或去应用商店下载该应用，而对于Android和IOS用户，唤起应用的操作是不同的，下面我将讲到如何唤起或打开应用商店下载相应应用。 1. 设置应用商店地址首先设置好跳转至应用商店的URL 123456// .js 文件中const ios_client_url = &quot;https://itunes.apple.com/app">
+<meta property="og:updated_time" content="2018-01-26T04:06:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在WebApp中唤起客户端">
+<meta name="twitter:description" content="当你在浏览器中需要打开或者下载某个应用时，往往你希望直接点击相应按钮即可打开或去应用商店下载该应用，而对于Android和IOS用户，唤起应用的操作是不同的，下面我将讲到如何唤起或打开应用商店下载相应应用。 1. 设置应用商店地址首先设置好跳转至应用商店的URL 123456// .js 文件中const ios_client_url = &quot;https://itunes.apple.com/app">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在WebApp中唤起客户端" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/26/在WebApp中唤起客户端/" class="article-date">
+  <time datetime="2018-01-26T04:06:06.000Z" itemprop="datePublished">2018-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在WebApp中唤起客户端
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当你在浏览器中需要打开或者下载某个应用时，往往你希望直接点击相应按钮即可打开或去应用商店下载该应用，<br>而对于Android和IOS用户，唤起应用的操作是不同的，下面我将讲到如何唤起或打开应用商店下载相应应用。</p>
+<h3 id="1-设置应用商店地址"><a href="#1-设置应用商店地址" class="headerlink" title="1. 设置应用商店地址"></a>1. 设置应用商店地址</h3><p>首先设置好跳转至应用商店的URL</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .js 文件中</span></span><br><span class="line"><span class="keyword">const</span> ios_client_url = <span class="string">"https://itunes.apple.com/appdir"</span>;</span><br><span class="line"><span class="keyword">const</span> android_client_url = <span class="string">"https://play.google.com/store/apps/details?id=xxx"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设你有一个函数来判断当前设备是否为Android设备，isAndroid()</span></span><br><span class="line"><span class="keyword">const</span> downloadURL = isAndroid() ? android_client_url : ios_client_url;</span><br></pre></td></tr></table></figure>
+<p>在HTML文件中创建一个button标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- .html文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span> <span class="attr">onClick</span>=<span class="string">"openInClient()"</span>&gt;</span>在客户端打开<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-通过按钮打开客户端"><a href="#2-通过按钮打开客户端" class="headerlink" title="2. 通过按钮打开客户端"></a>2. 通过按钮打开客户端</h3><p>要打开客户端，首先需要确认设备上装有客户端，若设备上没有，则跳转至应用商店下载<br>参考<a href="https://stackoverflow.com/questions/13044805/how-to-check-if-an-app-is-installed-from-a-web-page-on-an-iphone" target="_blank" rel="noopener">唤起IOSApp</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .js文件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openInClient</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 若设备上没有安装客户端，无法唤起客户端，该语句会执行，跳转至应用商店</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">window</span>.location = downloadURL &#125;, <span class="number">25</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断设备为Android设备 还是IOS设备 并唤起客户端</span></span><br><span class="line">  <span class="keyword">if</span> (isAndroid()) &#123;</span><br><span class="line">    <span class="comment">// intent-based URI语法</span></span><br><span class="line">    <span class="built_in">window</span>.location = <span class="string">`intent://my_host#Intent;package=my_package;scheme=my_scheme;action=my_action;component=my_component;S.browser_fallback_url=<span class="subst">$&#123;downloadURL&#125;</span>;end`</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// appname为IOS客户端的协议名</span></span><br><span class="line">    <span class="built_in">window</span>.location = <span class="string">"appname://"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于<a href="https://stackoverflow.com/questions/11773958/open-android-application-from-a-web-page" target="_blank" rel="noopener">唤起安卓App</a><br>若你想了解更详细的唤起安卓App的技术，请看<a href="https://jaq.alibaba.com/community/art/show?articleid=265" target="_blank" rel="noopener">这里</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/26/在WebApp中唤起客户端/" data-id="cjcvepjeb0000pp2oi4wu6bvk" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/26/在WebApp中唤起客户端/">在WebApp中唤起客户端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
