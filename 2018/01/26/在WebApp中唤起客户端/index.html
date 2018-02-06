@@ -15,7 +15,7 @@
     <style type="text/css">
         @font-face {
             font-family: 'Oswald-Regular';
-            src: url(/Blog/font/Oswald-Regular.ttf);
+            src: url(/font/Oswald-Regular.ttf);
         }
     </style>
     <style type="text/css">
@@ -47,10 +47,10 @@
         }
     }
 </style>
-    <link rel="stylesheet" href = /Blog/css/style.css?v=20180120 />
+    <link rel="stylesheet" href = /css/style.css?v=20180120 />
     <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
     
-    <script src="/Blog/scripts/main.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
     <!-- 百度统计  -->
     
     <!-- 谷歌统计  -->
@@ -69,14 +69,14 @@
     
     <div class="banner">
             <div class="blog-title">
-                <a href="/Blog/" >王二小的博客~</a>
+                <a href="/" >王二小的博客~</a>
             </div>
             <div class="post-title">
                 <a href="#" class="post-name">在WebApp中唤起客户端</a>
             </div>
     </div>
     
-    <a class="home-link" href=/Blog/>王二小的博客~</a>
+    <a class="home-link" href=/>王二小的博客~</a>
 </header>
     <div class="wrapper">
         <div class="site-intro">
@@ -111,15 +111,15 @@
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = javascript>javascript</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-href = IOS>IOS</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = javascript>javascript</a>
     
         <a class="post-tag" href="javascript:void(0);" data-href = Android>Android</a>
     
 </div>
             
-            <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = "/Blog/static/api/js/share.js"];</script>
+            <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = "/static/api/js/share.js"];</script>
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
                 <span class="post-intro-time">2018/01/26</span>
@@ -139,7 +139,7 @@
         
     </div>
 </div>
-        <img class="loading" src="/Blog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <script>
             var browser = {
                     versions: function () {
@@ -212,13 +212,18 @@
 <h3 id="2-通过按钮打开客户端"><a href="#2-通过按钮打开客户端" class="headerlink" title="2. 通过按钮打开客户端"></a>2. 通过按钮打开客户端</h3><p>要打开客户端，首先需要确认设备上装有客户端，若设备上没有，则跳转至应用商店下载<br>参考<a href="https://stackoverflow.com/questions/13044805/how-to-check-if-an-app-is-installed-from-a-web-page-on-an-iphone" target="_blank" rel="noopener">唤起IOSApp</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .js文件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openInClient</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 若设备上没有安装客户端，无法唤起客户端，该语句会执行，跳转至应用商店</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">window</span>.location = downloadURL &#125;, <span class="number">25</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断设备为Android设备 还是IOS设备 并唤起客户端</span></span><br><span class="line">  <span class="keyword">if</span> (isAndroid()) &#123;</span><br><span class="line">    <span class="comment">// intent-based URI语法</span></span><br><span class="line">    <span class="built_in">window</span>.location = <span class="string">`intent://my_host#Intent;package=my_package;scheme=my_scheme;action=my_action;component=my_component;S.browser_fallback_url=<span class="subst">$&#123;downloadURL&#125;</span>;end`</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// appname为IOS客户端的协议名</span></span><br><span class="line">    <span class="built_in">window</span>.location = <span class="string">"appname://"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>关于<a href="https://stackoverflow.com/questions/11773958/open-android-application-from-a-web-page" target="_blank" rel="noopener">唤起安卓App</a><br>若你想了解更详细的唤起安卓App的技术，请看<a href="https://jaq.alibaba.com/community/art/show?articleid=265" target="_blank" rel="noopener">这里</a></p>
+<hr>
+<p>2月6日更新：</p>
+<p>本来以为这个唤起客户端的功能就这样结束了，结果测试那边发现安卓机上 UC 浏览器无法唤起客户端，如果用 intent 直接跳404，网上搜索了各种资料都没有很好的解决掉这个问题，但是发现一般都会去用 <code>iframe.src</code> 来执行跳转功能。并且对于非 Chrome 的浏览器一般不会用 intent 去跳转，而是用协议名。于是我也进行了尝试</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// .js file</span></span><br><span class="line">  <span class="keyword">const</span> openAndroidApp = <span class="function">(<span class="params">fallbackUrl</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; hostname, pathname &#125; = location</span><br><span class="line">  <span class="keyword">const</span> userAgent = navigator.userAgent.toLowerCase()</span><br><span class="line">  <span class="keyword">const</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>)</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(iframe)</span><br><span class="line">  iframe.style.cssText=<span class="string">'display:none;width=0;height=0'</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">window</span>.location = fallbackUrl &#125;, <span class="number">200</span>)</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    userAgent.includes(<span class="string">'chrome'</span>) &amp;&amp;</span><br><span class="line">    userAgent.includes(<span class="string">'android'</span>) &amp;&amp;</span><br><span class="line">    !userAgent.includes(<span class="string">'ucbrowser'</span>) &amp;&amp;</span><br><span class="line">  ) &#123; <span class="comment">// Chrome 中</span></span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">`intent://<span class="subst">$&#123;hostname&#125;</span><span class="subst">$&#123;pathname&#125;</span>#Intent;package=my_package;scheme=my_scgene;S.browser_fallback_url=<span class="subst">$&#123;fallbackUrl&#125;</span>;end`</span></span><br><span class="line">    iframe.src = url</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// UC 浏览器</span></span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">`my_scheme://<span class="subst">$&#123;hostname&#125;</span><span class="subst">$&#123;pathname&#125;</span>?password=<span class="subst">$&#123;encryptedPassword&#125;</span>`</span></span><br><span class="line">    iframe.src = url</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样写发现不跳404了，但是也无法唤起客户端，会直接跳转至应用商店。于是我下载了一个 UC 开发者版本，和 Chrome 连在一起看 console，发现原来 UC 浏览器在 https 协议下不会去跳转到一个非 https 的协议去，会报错 <code>net::ERR_UNKNOWN_URL_SCHEME</code>。于是我把在 UC 下的跳转从 <code>iframe.src = url</code> 改成了 <code>window.open(url)</code>。这下终于能跳转成功了！！！但是还是会有不完美的地方，那就是浏览器会自己新开一个 tab，这样当你回到浏览器时会看到一个空白的页面。 不过这已经是目前我能够解决这个跳转的问题的唯一方法了。。</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/Blog/2018/01/30/fetch/" title= Promise 和 Fetch API >
+                <a href= "/2018/01/30/fetch/" title= Promise 和 Fetch API >
                     <span>Next Post</span>
                     <span>Promise 和 Fetch API</span>
                 </a>
@@ -327,12 +332,12 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/Blog/2018/01/30/fetch/" >Promise 和 Fetch API</a>
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2018/01/30/fetch/" >Promise 和 Fetch API</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/Blog/2018/01/26/在WebApp中唤起客户端/" >在WebApp中唤起客户端</a>
+            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/2018/01/26/在WebApp中唤起客户端/" >在WebApp中唤起客户端</a>
         </li>
     
     </div>
@@ -340,9 +345,9 @@
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name"><a href= "#">javascript</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">IOS</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">javascript</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Android</a></span>
     
@@ -379,7 +384,7 @@ jsonContent:
 </div> 
     <script>
     var jsInfo = {
-        root: '/Blog/'
+        root: '/'
     }
 </script>
     <!-- 不蒜子  -->
