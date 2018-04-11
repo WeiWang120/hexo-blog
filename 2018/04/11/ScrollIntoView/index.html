@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Promise 和 Fetch API · Carl&#39;s Blog
+        ScrollIntoView · Carl&#39;s Blog
         
     </title>
     <link rel="icon" href= /assets/favicon.ico>
@@ -72,7 +72,7 @@
                 <a href="/Blog/" >王二小的博客~</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Promise 和 Fetch API</a>
+                <a href="#" class="post-name">ScrollIntoView</a>
             </div>
     </div>
     
@@ -93,7 +93,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Promise 和 Fetch API
+            ScrollIntoView
             <!-- 404 -->
             
         </h1>
@@ -113,12 +113,16 @@
     
         <a class="post-tag" href="javascript:void(0);" data-href = javascript>javascript</a>
     
+        <a class="post-tag" href="javascript:void(0);" data-href = 浏览器兼容>浏览器兼容</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = DOM>DOM</a>
+    
 </div>
             
             <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = "/Blog/static/api/js/share.js"];</script>
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/01/30</span>
+                <span class="post-intro-time">2018/04/11</span>
                 <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                     <span class="iconfont-archer">&#xe604;</span>
                     <span id="busuanzi_value_page_pv"></span>
@@ -201,53 +205,25 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>这两天看了很多关于 Promise 和 fetch 的文档，想整理一下以备日后复习。</p>
-<h3 id="1-Promise"><a href="#1-Promise" class="headerlink" title="1. Promise"></a>1. Promise</h3><p>什么是 Promise 呢，在 MDN 上给出的定义是这样的</p>
-<p>The <strong>Promise</strong> object represents the eventual completion (or failure) of an <strong>asynchronous</strong> operation, and its resulting value.</p>
-<p>关键词是 asynchronous，Promise 让异步方法可以像同步方法一样返回值。</p>
-<p>在 Promise 出现在 ES6 标准之前，传统的异步操作是这样的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> task = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'done'</span>)</span><br><span class="line">    callback(<span class="literal">true</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  setTimeout(task, <span class="number">5000</span>)</span><br><span class="line">&#125;</span><br><span class="line">wait(<span class="function"><span class="params">bool</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (bool) <span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">  <span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>使用 Promise 封装之后是这样的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> task = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'done'</span>)</span><br><span class="line">      resolve(<span class="string">'success'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(task, <span class="number">5000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这时候执行 <code>wait()</code> 返回的是一个 <code>promise</code>， 我们可以用 <code>then</code> 来执行后续的操作</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res) <span class="comment">// success</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>加上 ES7 的 async/await ，我们可以让代码可读性更高， 如同同步一般</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 外层包一个 async function</span></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> wait()</span><br><span class="line">    <span class="built_in">console</span>.log(res) <span class="comment">// success</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Oops'</span>, e)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>另外最近学到了一个关于 Promise 很巧妙的用法！需求是这样的，一段 js 代码中 <code>ReactDOM.render(&lt;SomePage/&gt;)</code> ，在这个 <code>SomePage</code> 中若用户进行了某项操作，则继续执行 js 后面的代码，否则一直卡在当前界面。</p>
-<p>这个时候就可以用 Promise 来实现这个需求，将 <code>resolve</code> 作为 <code>props</code> 传进 <code>SomePage</code>， 当用户进行某项操作后（比如点击）执行 resolve 于是 js 文件中后面的代码继续执行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 外层包一个 async function</span></span><br><span class="line"><span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">SomePage</span> <span class="attr">continueRun</span>=<span class="string">&#123;resolve&#125;</span> /&gt;</span>)</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">// 后续代码...</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-Fetch"><a href="#2-Fetch" class="headerlink" title="2. Fetch"></a>2. Fetch</h3><p>Fetch API 是基于 Promise 设计的，使用 fetch 返回的是一个 Promise 对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url)</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>fetch 的优点是</p>
-<ol>
-<li>语义简介，基于 Promise 实现</li>
-<li>可以使用 async/await 可读性好</li>
-</ol>
-<p>缺点是</p>
-<ol>
-<li>请求默认不带 cookie</li>
-<li>是一个 low-level API，最好自己根据需求进行封装</li>
-</ol>
-<p>下面简单封装一个 fetchJson 的方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> merge <span class="keyword">from</span> <span class="string">'lodash/merge'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fetchJson = <span class="keyword">async</span> (url, options) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">default</span> = &#123;</span><br><span class="line">    method: <span class="string">'GET'</span></span><br><span class="line">    crendentials: <span class="string">'include'</span>  <span class="comment">// 带上cookie</span></span><br><span class="line">    headers: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> request = <span class="keyword">new</span> Request(url, merge(&#123;&#125;, <span class="keyword">default</span>, options))</span><br><span class="line">  <span class="keyword">return</span> fetch(request)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样 fetchJson 默认是用 GET 方法去获取 Json 数据，若需要改变 method 为 PUT<br>只需要</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetchJson(url, &#123; <span class="attr">method</span>: <span class="string">'PUT'</span> &#125;)</span><br></pre></td></tr></table></figure>
-<p>以上只是自己目前一点浅显的理解，日后还会不定期更新~</p>
+        <h3 id="Scroll-Into-View"><a href="#Scroll-Into-View" class="headerlink" title="Scroll Into View"></a>Scroll Into View</h3><p>假设我有<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"go_to"</span>&gt;</span>Go to 3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- content height 固定，overflow：scroll --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"anchor1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"anchor2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"anchor3"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"anchor4"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"anchor5"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"anchor6"</span>&gt;</span>6<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'go_to'</span>).addEventListener(<span class="string">'click'</span>, handleClick)</span><br></pre></td></tr></table></figure>
+<p>要实现点击按钮然后滚动到相应 anchor ，最简单的方法是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const handleClick = () =&gt; &#123;</span><br><span class="line">  location.href = &apos;#anchor&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这样页面会直接跳转到相应位置，为了让页面能滚动到而不是直接跳到该地方，我们可以用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'anchor'</span>).scrollIntoView(&#123;</span><br><span class="line">  behavior: <span class="string">'smooth'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>但是该方法在 Safari 和 IE 中并不能实现滚动特效的兼容，只会跳到 anchor，详见 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">MDN</a></p>
+<p>用下面这个方法可以做到浏览器的兼容<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// element 是需要 scroll 的元素，to 指的是向下滚多少距离，duration 是时间</span></span><br><span class="line"><span class="keyword">const</span> scrollTo = <span class="function">(<span class="params">element, to, duration</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> currentTime</span><br><span class="line">  <span class="keyword">const</span> start = element.scrollTop</span><br><span class="line">  <span class="keyword">const</span> change = to - start</span><br><span class="line">  <span class="keyword">const</span> increment = <span class="number">20</span></span><br><span class="line">  currentTime = <span class="number">0</span>        </span><br><span class="line">  <span class="keyword">const</span> animateScroll = <span class="function"><span class="params">()</span> =&gt;</span> &#123;   </span><br><span class="line">      currentTime += increment</span><br><span class="line">      <span class="keyword">const</span> val = easeInOutQuad(currentTime, start, change, duration)</span><br><span class="line">      element.scrollTop = val</span><br><span class="line">      <span class="keyword">if</span>(currentTime &lt; duration) &#123;</span><br><span class="line">        setTimeout(animateScroll, increment)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  animateScroll()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//t = current time</span></span><br><span class="line"><span class="comment">//b = start value</span></span><br><span class="line"><span class="comment">//c = change in value</span></span><br><span class="line"><span class="comment">//d = duration</span></span><br><span class="line"><span class="keyword">const</span> easeInOutQuad = <span class="function">(<span class="params">t, b, c, d</span>) =&gt;</span> &#123;</span><br><span class="line">    t /= d/<span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> (t &lt; <span class="number">1</span>) <span class="keyword">return</span> c/<span class="number">2</span>*t*t + b</span><br><span class="line">    t--</span><br><span class="line">    <span class="keyword">return</span> -c/<span class="number">2</span> * (t*(t<span class="number">-2</span>) - <span class="number">1</span>) + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样当需要滚动到例如 3 的时候，element 为 content，to 为当 content 滚动到3的时候 element.scrollTop。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> content = <span class="built_in">document</span>.getElementById(<span class="string">'#content'</span>)</span><br><span class="line">  <span class="comment">// 要拿到滚动到3的 content.scrollTop</span></span><br><span class="line">  <span class="keyword">const</span> anchor3 = <span class="built_in">document</span>.getElementById(<span class="string">'#anchor3'</span>)</span><br><span class="line">  <span class="keyword">const</span> to = anchor3.getBoundingClientRect().top + content.scrollTop <span class="comment">// 第一项为 anchor3 距离 viewport 的距离， 第二项是当前 content 的 scrollTop</span></span><br><span class="line">  scrollTo(content, to, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
-                <a href= "/Blog/2018/03/28/algorithm/" title= AAAAAlgorithm >
-                    <span>Next Post</span>
-                    <span>AAAAAlgorithm</span>
-                </a>
-            </li>
-        
         
             <li class="previous">
-                <a href= "/Blog/2018/01/26/在WebApp中唤起客户端/" title= 在WebApp中唤起客户端 >
+                <a href= "/Blog/2018/03/28/algorithm/" title= AAAAAlgorithm >
                     <span>Previous Post</span>
-                    <span>在WebApp中唤起客户端</span>
+                    <span>AAAAAlgorithm</span>
                 </a>
             </li>
         
@@ -309,7 +285,7 @@
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Promise"><span class="toc-number">1.</span> <span class="toc-text">1. Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Fetch"><span class="toc-number">2.</span> <span class="toc-text">2. Fetch</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scroll-Into-View"><span class="toc-number">1.</span> <span class="toc-text">Scroll Into View</span></a></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
