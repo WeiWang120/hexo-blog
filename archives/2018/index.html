@@ -158,6 +158,37 @@
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/Blog/2018/04/16/png-to-base64/" >
+                
+                    <span>png to base64</span>
+            </a>
+            <a class="content-show-full" href = "/Blog/2018/04/16/png-to-base64/" >
+                <div class="abstract-content">
+                    Png 图片转换成 base64上周新写了一个网页，上面有许多的图标，最开始我把图标都通过 &lt;img src=&#39;/path/to/icon&#39; /&gt; 的方式引了进来，但是这样页面加载的时候有大量 http 请求，相应的需要更长的加载时间。并且每一张图片只有几 kb 大小，这样使用大量 http 请求未免成本太高。
+后来准备用 css sprites 把这些小的图标打成一张大图，然后通过 background-position 来显示每一个图标，这样一来对于众多图标只需要进行一次 http 请求，感觉性能瞬间提升。但是如果后期又需要增加新的图标呢，或者是要更换现有...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = canvas>canvas</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = image>image</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/16</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/Blog/2018/04/11/ScrollIntoView/" >
                 
                     <span>ScrollIntoView</span>
@@ -362,7 +393,16 @@ The Promise object represents the eventual completion (or failure) of an asynchr
     
     
     
-    <div class="total-archive"> Total : 4 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 5 </div>
     
     <div class="post-archive">
     
@@ -371,6 +411,11 @@ The Promise object represents the eventual completion (or failure) of an asynchr
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/Blog/2018/04/16/png-to-base64/" >png to base64</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -402,6 +447,10 @@ The Promise object represents the eventual completion (or failure) of an asynchr
         <span class="sidebar-tag-name"><a href= "#">浏览器兼容</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">DOM</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">canvas</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">image</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">IOS</a></span>
     
