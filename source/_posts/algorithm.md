@@ -25,7 +25,7 @@ const getSkechLayers = (layers, art) => {
 	    childrenLayers: []
 	  }
 	})
-	
+
 	for (var id in mappedData) {
 	  const mappedLayer = mappedData[id]
 	  if (mappedLayer.parent) {
@@ -48,5 +48,40 @@ function isOverlap (a, b) {
   let isHorCross = horMax.left - horMin.left < horMin.width
   let isVerCross = verMax.top - verMin.top < verMin.height
   return isHorCross && isVerCross
+}
+```
+
+### 3. 将数组中的几个元素后移或者前移一位
+```javascript
+/**
+ * 将数组 array 中的某几个元素 itemsToMove 右移
+ * 如移动 [a,b,c,d,e] 中的 [a,b] 得到 [c,a,b,d,e]
+ * 1. 遍历数组, 当前元素需要移动时, 将其放入buffer, 继续遍历
+ * 2. 当前元素不需要移动时, 将其放入新数组, 然后将buffer中的元素依次push到新数组, 清空buffer
+ * 3. 遍历结束后, 将buffer中的剩余元素push到新数组
+ */
+const arrayItemsMoveRight = (array, itemsToMove) => {
+  const newArray = []
+  let buffer = []
+  array.forEach(item => {
+    if (itemsToMove.includes(item)) {
+      buffer.push(item)
+    } else {
+      newArray.push(item)
+      newArray.push(...buffer)
+      buffer = []
+    }
+  })
+  newArray.push(...buffer)
+  return newArray
+}
+
+/**
+ * 将数组 array 中的某几个元素 itemsToMove 左移
+ * => 转换为对 reverse后的数组 的右移操作
+ */
+const arrayItemsMoveLeft = (array, itemsToMove) => {
+  const reverseArray = [...array].reverse()
+  return arrayItemsMoveRight(reverseArray, itemsToMove).reverse()
 }
 ```
