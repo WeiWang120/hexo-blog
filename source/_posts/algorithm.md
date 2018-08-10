@@ -1,7 +1,7 @@
 ---
 title: AAAAAlgorithm
 date: 2018-03-28 17:44:53
-tags:
+tags: algorithm
 ---
 
 ## 记录一些工作中遇到的算法
