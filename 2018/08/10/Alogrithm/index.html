@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Sorting Alogrithm · Carl&#39;s Blog
+        Sorting Algorithm · Carl&#39;s Blog
         
     </title>
     <link rel="icon" href= /assets/favicon.ico>
@@ -72,7 +72,7 @@
                 <a href="/Blog/" >王二小的博客~</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Sorting Alogrithm</a>
+                <a href="#" class="post-name">Sorting Algorithm</a>
             </div>
     </div>
     
@@ -93,7 +93,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Sorting Alogrithm
+            Sorting Algorithm
             <!-- 404 -->
             
         </h1>
@@ -111,7 +111,7 @@
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = alogrithm>alogrithm</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = algorithm>algorithm</a>
     
 </div>
             
@@ -201,7 +201,7 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Classic-Sorting-Alogrithm"><a href="#Classic-Sorting-Alogrithm" class="headerlink" title="Classic Sorting Alogrithm"></a>Classic Sorting Alogrithm</h2><p>Some implementation of classic sorting alogrithm</p>
+        <h2 id="Classic-Sorting-Algorithm"><a href="#Classic-Sorting-Algorithm" class="headerlink" title="Classic Sorting Algorithm"></a>Classic Sorting Algorithm</h2><p>Some implementation of classic sorting alogrithm</p>
 <h5 id="1-Selection-Sort"><a href="#1-Selection-Sort" class="headerlink" title="1. Selection Sort"></a>1. Selection Sort</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// each pass find the smallest number, swap it with the first one Of UNSORTED parts</span></span><br><span class="line">    <span class="comment">// [7,2,4,5,3] -&gt; [2,7,4,5,3] -&gt; [2,3,4,5,7]</span></span><br><span class="line">    <span class="comment">// Time Complexity O(n^2)</span></span><br><span class="line">    <span class="comment">// Space Complexity O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = arr.length;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> iMin = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (arr[j] &lt; arr[iMin]) iMin = j;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(arr, iMin, i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h5 id="2-Insertion-Sort"><a href="#2-Insertion-Sort" class="headerlink" title="2. Insertion Sort"></a>2. Insertion Sort</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// [7,2,4,5,3] -&gt; [2,7,4,5,3] -&gt; [2,4,7,5,3] -&gt; [2,4,5,7,3] -&gt; [2,3,4,5,7]</span></span><br><span class="line">    <span class="comment">// Time Complexity O(n^2)</span></span><br><span class="line">    <span class="comment">// Space Complexity O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> len = arr.length;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> value = arr[i];</span><br><span class="line">        <span class="keyword">int</span> holeIndex = i;</span><br><span class="line">        <span class="keyword">while</span> (holeIndex &gt; <span class="number">0</span> &amp;&amp; arr[holeIndex - <span class="number">1</span>] &gt; value) &#123;</span><br><span class="line">          arr[holeIndex] = arr[holeIndex - <span class="number">1</span>];  <span class="comment">// insertion, shift sorted parts one slot right, and move holeIndex one slot left</span></span><br><span class="line">          holeIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[holeIndex] = value;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h5 id="3-Bubble-Sort"><a href="#3-Bubble-Sort" class="headerlink" title="3. Bubble Sort"></a>3. Bubble Sort</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// each pass bubble up the largest number</span></span><br><span class="line">    <span class="comment">// [7,2,4,5,3] -&gt; [2,4,5,3,7] -&gt; [2,4,3,5,7] -&gt; [2,3,4,5,7]</span></span><br><span class="line">    <span class="comment">// Time Complexity O(n^2)</span></span><br><span class="line">    <span class="comment">// Space Complexity O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = arr.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> flag = <span class="number">0</span>; <span class="comment">// set a flag to break the loop when already the array is already sorted</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(arr, j, j + <span class="number">1</span>);</span><br><span class="line">                    flag = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Classic-Sorting-Alogrithm"><span class="toc-number">1.</span> <span class="toc-text">Classic Sorting Alogrithm</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Selection-Sort"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1. Selection Sort</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Insertion-Sort"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2. Insertion Sort</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Bubble-Sort"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">3. Bubble Sort</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-Merge-Sort"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">4. Merge Sort</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Quick-Sort"><span class="toc-number">1.0.1.</span> <span class="toc-text">5. Quick Sort</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Classic-Sorting-Algorithm"><span class="toc-number">1.</span> <span class="toc-text">Classic Sorting Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Selection-Sort"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1. Selection Sort</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Insertion-Sort"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2. Insertion Sort</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Bubble-Sort"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">3. Bubble Sort</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-Merge-Sort"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">4. Merge Sort</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Quick-Sort"><span class="toc-number">1.0.1.</span> <span class="toc-text">5. Quick Sort</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
@@ -356,7 +356,7 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/Blog/2018/08/10/Alogrithm/" >Sorting Alogrithm</a>
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/Blog/2018/08/10/Alogrithm/" >Sorting Algorithm</a>
         </li>
     
     
@@ -389,7 +389,7 @@
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name"><a href= "#">alogrithm</a></span>
+        <span class="sidebar-tag-name"><a href= "#">algorithm</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">javascript</a></span>
     
