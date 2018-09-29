@@ -58,10 +58,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -73,29 +71,18 @@
         <div class="site-intro">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
-    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/intro-desktop.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/Blog/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            王二小的博客~
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                未来をその手に
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -190,233 +177,10 @@
             </div>
         </article>
     
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/Blog/2018/08/10/Alogrithm/" >
-                
-                    <span>Sorting Algorithm</span>
-            </a>
-            <a class="content-show-full" href = "/Blog/2018/08/10/Alogrithm/" >
-                <div class="abstract-content">
-                    Classic Sorting AlgorithmSome implementation of classic sorting alogrithm
-1. Selection Sort1234567891011121314// each pass find the smallest number, swap it with the first one Of UNSORTED parts    // [7,2,4,5,3] -&gt; [2,7,4,5,3] -&gt; [2,3,4,5,7]    // Time Complexity O(n^2)    // Space Complexi...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = algorithm>algorithm</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/08/10</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/Blog/2018/04/16/png-to-base64/" >
-                
-                    <span>png to base64</span>
-            </a>
-            <a class="content-show-full" href = "/Blog/2018/04/16/png-to-base64/" >
-                <div class="abstract-content">
-                    Png 图片转换成 base64上周新写了一个网页，上面有许多的图标，最开始我把图标都通过 &lt;img src=&#39;/path/to/icon&#39; /&gt; 的方式引了进来，但是这样页面加载的时候有大量 http 请求，相应的需要更长的加载时间。并且每一张图片只有几 kb 大小，这样使用大量 http 请求未免成本太高。
-后来准备用 css sprites 把这些小的图标打成一张大图，然后通过 background-position 来显示每一个图标，这样一来对于众多图标只需要进行一次 http 请求，感觉性能瞬间提升。但是如果后期又需要增加新的图标呢，或者是要更换现有...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = canvas>canvas</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = image>image</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/16</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/Blog/2018/04/11/ScrollIntoView/" >
-                
-                    <span>ScrollIntoView</span>
-            </a>
-            <a class="content-show-full" href = "/Blog/2018/04/11/ScrollIntoView/" >
-                <div class="abstract-content">
-                    Scroll Into View假设我有12345678910&lt;button id="go_to"&gt;Go to 3&lt;/button&gt;&lt;!-- content height 固定，overflow：scroll --&gt;&lt;div id="content"&gt;  &lt;div id="anchor1"&gt;1&lt;/div&gt;  &lt;div id="anchor2"&gt;2&lt;/div&gt;  &lt;div id="anchor3"&gt;3&lt;/div&gt;  &lt;div id="anchor4"&gt;4&lt...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = javascript>javascript</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 浏览器兼容>浏览器兼容</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = DOM>DOM</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/11</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/Blog/2018/03/28/algorithm/" >
-                
-                    <span>AAAAAlgorithm</span>
-            </a>
-            <a class="content-show-full" href = "/Blog/2018/03/28/algorithm/" >
-                <div class="abstract-content">
-                    记录一些工作中遇到的算法1. 一个树状结构被铺平后，通过 parentId 还原12345678910111213141516171819202122232425262728const getSkechLayers = (layers, art) =&gt; &#123;	const &#123; artboard: &#123; width, height, top, left, z &#125; &#125; = this.props	const tree = &#123;	  width,	  left,	  top,	  height,	  z,	  childrenLayers...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = algorithm>algorithm</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/03/28</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/Blog/2018/01/30/fetch/" >
-                
-                    <span>Promise 和 Fetch API</span>
-            </a>
-            <a class="content-show-full" href = "/Blog/2018/01/30/fetch/" >
-                <div class="abstract-content">
-                    这两天看了很多关于 Promise 和 fetch 的文档，想整理一下以备日后复习。
-1. Promise什么是 Promise 呢，在 MDN 上给出的定义是这样的
-The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
-关键词是 asynchronous，Promise 让异步方法可以像同步方法一样返回值。
-在 Promise 出现在 ES6 标准之前，传统的异步操作是这样的123456789101...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = javascript>javascript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/01/30</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/Blog/2018/01/26/在WebApp中唤起客户端/" >
-                
-                    <span>在WebApp中唤起客户端</span>
-            </a>
-            <a class="content-show-full" href = "/Blog/2018/01/26/在WebApp中唤起客户端/" >
-                <div class="abstract-content">
-                    当你在浏览器中需要打开或者下载某个应用时，往往你希望直接点击相应按钮即可打开或去应用商店下载该应用，而对于Android和IOS用户，唤起应用的操作是不同的，下面我将讲到如何唤起或打开应用商店下载相应应用。
-1. 设置应用商店地址首先设置好跳转至应用商店的URL
-123456// .js 文件中const ios_client_url = "https://itunes.apple.com/appdir";const android_client_url = "https://play.google.com/store/apps/details?id=xxx";// 假设你有一个函数来判...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = javascript>javascript</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = IOS>IOS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = Android>Android</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/01/26</span>
-                </div>
-            </div>
-        </article>
-    
     <!-- paginator  -->
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" src= /Blog/avatar/kumamon.jpg >
-    <div class="profile-name">王二小</div>
-    
-    <div class="profile-signature">
-        Carl Wang
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:weiwang@wustl.edu" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="https://github.com/WeiWang120" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-
-    </div>
-    
-    
-    
-        <div class="about-me">
-            <div>
-                <a href = "/Blog/about" >ABOUT ME</a>
-            </div>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
